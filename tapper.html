@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Tapper</title>
+        <meta charset="utf-8">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+  #main-container{ 
+      margin-left: auto;
+    margin-right: auto;
+    width: 8em;
+    display: grid;
+      }
+    #fresh{display: none;} 
+      /*#main-container{height: 100%; display: grid;margin: auto;}*/
+      
+</style>
+    </head>
+    <body>
+        <div id="main-container">
+            <h1>Tapper</h1>
+            <h2>Do you enjoy tapping?</h2>
+            
+            <p>Tap away!!!</p>
+            <button class="btn btn-primary" id="btn" onclick='goDown()'>Tap</button>
+            <h2 id="more"></h2>
+            <h3 id="h3"> </h3>
+            <button class="btn btn-success" id="fresh" onclick='goAgain()'>Go Again</button>
+        </div>
+        <script>
+           var tapCount = 20;
+           var d = document.getElementById('h3');
+           var d2 = document.getElementById('more');
+            var fresh = document.getElementById('fresh');
+           function goDown(){
+               d.style.display = 'block';
+               if(tapCount > 0){
+               tapCount--;
+               d.innerHTML = tapCount+" Taps left..";
+               if(tapCount===5){
+                   d.style.color = 'red';
+                   d.innerHTML = "Hey!You're running out of taps!";
+               }
+               }
+               if(tapCount < 1){
+                d.innerHTML = "You're all tapped out!Go again?"; 
+                fresh.style.display = 'block';
+               }
+           }//end of down function
+
+           function goAgain(){
+               if(tapCount===0){
+                   tapCount = 20;
+                   tapCount += 10;
+                   d2.innerHTML = "Whoop!We gave you extra Taps!!";
+                   d.style.display = 'none';
+                   d.style.color = 'black';
+                   fresh.style.display = 'none';
+               }
+             
+             down();
+           }
+
+        </script>
+    </body>
+</html>                
